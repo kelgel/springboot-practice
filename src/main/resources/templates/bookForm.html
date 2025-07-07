@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 등록</title>
+</head>
+<body>
+<h2>📚 도서 등록 (관리자)</h2>
+<form th:action="@{${book.id != null ? '/admin/books/edit/' + book.id : '/admin/books/new'}}" th:object="${book}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+    <!--th:field="*{title}": ${book.title}과 연결됨 (자동 양방향 바인딩)-->
+    <p>제목: <input type="text" th:field="*{title}"/></p>
+    <p>저자: <input type="text" th:field="*{author}"/></p>
+    <p>출판사: <input type="text" th:field="*{publisher}"/></p>
+    <p>가격: <input type="number" th:field="*{price}"/></p>
+    <p>설명: <textarea th:field="*{description}"></textarea></p>
+
+    <button type="submit" th:text="${book.id != null ? '수정' : '등록'}"></button>
+</form>
+<p><a th:href="@{/booklist}">목록으로</a></p>
+</body>
+</html>
