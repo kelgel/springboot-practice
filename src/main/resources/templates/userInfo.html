@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/mainLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+</head>
+<div layout:fragment="content">
+    <h3 th:text="|id=${id}|">aa</h3>
+    <h3 th:text="|password=${password}|">11</h3>
+    <a th:href="@{/}">Home</a>
+</div>
+</html>
