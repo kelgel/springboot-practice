@@ -19,9 +19,23 @@ public class BookController {
 
     // 관리자용 책 목록 가져오기
     @GetMapping("/admin/books")
-    public String getBookList(Model model) {
-        List<Book> books = bookRepository.findAll();
+    public String getBookList(String field, String keyword, Model model) {
+        List <Book> books;
+
+        if (keyword  != null && !keyword.isEmpty()) {
+            books = switch (field) {
+                case "title" -> bookRepository.findByTitleContaining(keyword);
+                case "author" -> bookRepository.findByAuthorContaining(keyword);
+                case "publisher" -> bookRepository.findByPublisherContaining(keyword);
+                default ->
+                        bookRepository.findByTitleContainingOrAuthorContainingOrPublisherContaining(keyword, keyword, keyword);
+            };
+        } else {
+            books = bookRepository.findAll();
+        }
         model.addAttribute("books",books);
+        model.addAttribute("field", field);
+        model.addAttribute("keyword", keyword); // ← 검색창에 값 유지용
         return "bookList";
     }
 
