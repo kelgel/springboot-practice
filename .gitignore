@@ -1,11 +1,23 @@
+# 프로젝트 문서
 HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-src/main/resources/application.properties
 
-### STS ###
+# Build output
+/target/
+build/
+
+# Maven Wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Spring Boot 환경 설정 파일 (민감정보)
+/src/main/resources/application.properties
+/src/main/resources/application.yml
+/src/main/resources/application-*.properties
+/src/main/resources/application-*.yml
+.env
+
+# IDE: Spring Tool Suite
 .apt_generated
 .classpath
 .factorypath
@@ -14,21 +26,25 @@ src/main/resources/application.properties
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IDE: IntelliJ
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# IDE: NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+# IDE: VS Code
 .vscode/
+
+# OS별 캐시
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
